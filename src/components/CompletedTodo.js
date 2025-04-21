@@ -3,7 +3,7 @@ import { useCreateTodo } from '../hooks/useCreateTodo'
 
 const CompletedTodo = () => { 
   
-    const { completedTodo } = useSelector( state => state.todo) 
+    const { completedTodo } = useSelector( state => state.todo)  
     
     //custome hook
     const { handleDelete, handleToggle } = useCreateTodo()

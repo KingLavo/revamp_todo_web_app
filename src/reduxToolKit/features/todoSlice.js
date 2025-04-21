@@ -46,12 +46,18 @@ const initialState ={
         deleteCompleted:( state, action )=>{ 
             state.completedTodo = state.completedTodo.filter( item => item.id !== action.payload)
         }, 
+        clearCompletedTodo: ( state )=>{
+            state.completedTodo = []
+        },
+        todosClearCompleted: (state)=>{
+            state.todos = state.todos.filter( item => item.isCompleted === false)
+        }
      }
  })
  export const  {  
                     deleteTodo, createTodo, deleteCompleted,
                     toggleTodo, toggleCompleted,  getAllTodos, 
-                    filterIsCompleted, filterActiveTodos
+                    filterIsCompleted, filterActiveTodos, clearCompletedTodo, todosClearCompleted
 
                 } = todoSlice.actions;
 
