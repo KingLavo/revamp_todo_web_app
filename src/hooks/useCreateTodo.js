@@ -1,6 +1,7 @@
  import { useDispatch } from "react-redux"
 import { createTodo ,toggleCompleted, deleteCompleted,   
-            toggleTodo, deleteTodo, filterActiveTodos,  
+            toggleTodo, deleteTodo, filterActiveTodos, 
+            clearCompletedTodo,  todosClearCompleted 
         } from "../reduxToolKit/features/todoSlice"
 //uuid for id set up
 import { v4 as uuidv4 } from "uuid"
@@ -51,7 +52,12 @@ export const useCreateTodo = ( text, setError, setText  )=>{
      const handleActiveTodos = ()=>{ 
           dispatch(filterActiveTodos())  
     }
+    //clear completed todo with a single butto click( completed )
+    const handleClearCompleted = ()=>{
+        dispatch(clearCompletedTodo())
+        dispatch( todosClearCompleted()) 
+    } 
     
 
-    return {handleSubmit, handleDelete, handleToggle, handleActiveTodos }
+    return {handleSubmit, handleDelete, handleToggle, handleActiveTodos, handleClearCompleted }
 }

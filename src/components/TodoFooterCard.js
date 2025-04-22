@@ -1,17 +1,14 @@
-import { useSelector, useDispatch } from "react-redux" 
-import MiddleFooter from "../utilities/MiddleFooter" 
-import { clearCompletedTodo,  todosClearCompleted } from "../reduxToolKit/features/todoSlice"
+import { useSelector } from "react-redux" 
+import MiddleFooter from "../utilities/MiddleFooter"  
+import { useCreateTodo } from "../hooks/useCreateTodo"
 
 
 const TodoFooterCard = ({ handleTabs })=>{  
 
     let { todos } = useSelector( state => state.todo)
-    const dispatch = useDispatch()
-    
-    const handleClearCompleted = ()=>{
-        dispatch(clearCompletedTodo())
-        dispatch( todosClearCompleted()) 
-    } 
+    //custom hook
+    const { handleClearCompleted } = useCreateTodo()
+      
 
     return(
         <div className="todo_footer_card">   
@@ -23,6 +20,7 @@ const TodoFooterCard = ({ handleTabs })=>{
             
             <div className="right-footer ">
                 <button onClick={ ()=>  handleClearCompleted()} >Clear Completed</button>
+
             </div>
         </div>
     )
